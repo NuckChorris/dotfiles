@@ -30,7 +30,11 @@ preexec () {
 
 # Enable colors
 # Replace BSD LS with GNU LS
-alias ls="gls --color"
+command -v gls >/dev/null 2>&1 && {
+	alias ls="gls --color"
+} || {
+	alias ls="ls --color"
+}
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
@@ -43,9 +47,9 @@ bindkey "^[[F"  end-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[OF" end-of-line
 
-# Load in NVM
-. ~/nvm/nvm.sh
+command -v nvm >/dev/null 2>&1 && {
+	. ~/nvm/nvm.sh
+}
 
 # Set up environment
 cd ~/Code
-nvm use 0.6

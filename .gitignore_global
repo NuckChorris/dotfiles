@@ -1,0 +1,8 @@
+# Idiocy from editors
+*~
+*.swp
+*.sublime-workspace
+
+# Idiocy from OSes
+.DS_Store
+thumbs.db

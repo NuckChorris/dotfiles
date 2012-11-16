@@ -7,10 +7,10 @@ LS_COLORS="di=37:ln=1:so=1:pi=1:ex=1:bd=33:cd=35:su=1:sg=1;47:tw=1:ow=1;46"
 LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
 
 # Aliases and custom functions
-settitle () {
-	print -Pn "\e]0;$1\a"
-	TITLE="$1"
-}
+#settitle () {
+#	print -Pn "\e]0;$1\a"
+#	TITLE="$1"
+#}
 alias ll="ls -alF"
 alias vim="vim -c start"
 alias ssx="ssh -C -X -c blowfish"
@@ -23,18 +23,21 @@ npmv () {
 }
 
 # Add hooks
-precmd () {
-	if [[ -z $TITLE ]]; then
-		settitle "%n@%m:%~"
-	else
-		settitle "$TITLE (%~)"
-	fi
-}
-preexec () {
-	if [[ -z $TITLE ]]; then
-		settitle "$2"
-	else
-		settitle "$TITLE ($2)"
+#precmd () {
+#	if [[ -z $TITLE ]]; then
+#		settitle "%n@%m:%~"
+#	else
+#		settitle "$TITLE (%~)"
+#	fi
+#}
+#preexec () {
+#	if [[ -z $TITLE ]]; then
+#		settitle "$2"
+#	else
+#		settitle "$TITLE ($2)"
+#	fi
+#}
+
 # Hooks to provide for git prompt
 setopt prompt_subst
 autoload -Uz vcs_info
@@ -71,10 +74,15 @@ bindkey "^[[F"  end-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[OF" end-of-line
 
+
+# Make it so cd-ing into ~/Code stuff is easier
+cdpath=(. ~/Code/ $cdpath)
+
 # Source NVM if installed
 command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 	. ~/nvm/nvm.sh
 }
 
 # Set up environment
-cd ~/Code
+#cd ~/Code
+

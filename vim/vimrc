@@ -1,6 +1,13 @@
 set nocompatible
 
 " ----------------------------------------------------------------------------
+"  Pathogen
+" ----------------------------------------------------------------------------
+
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
+" ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
 
@@ -39,6 +46,10 @@ set scrolloff=3
 set laststatus=2
 set showmatch
 set mat=5
+
+" Wrapping preeeeetty
+set cpoptions+=n
+let &showbreak = '  │ '
 
 " Syntax Highlighting
 syntax on

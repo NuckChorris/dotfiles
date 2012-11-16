@@ -12,6 +12,15 @@ settitle () {
 	TITLE="$1"
 }
 alias ll="ls -alF"
+alias vim="vim -c start"
+alias ssx="ssh -C -X -c blowfish"
+alias steve="ssx plejeck@67.182.84.162 -p 50"
+npmgh () {
+	open $(npm view $1 repository.url | sed s/git\:/https\:/ | sed s/\\\\.git//)
+}
+npmv () {
+	npm info $1 dist-tags.latest
+}
 
 # Add hooks
 precmd () {

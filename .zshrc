@@ -62,7 +62,8 @@ bindkey "^[[F"  end-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[OF" end-of-line
 
-command -v nvm >/dev/null 2>&1 && {
+# Source NVM if installed
+command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 	. ~/nvm/nvm.sh
 }
 

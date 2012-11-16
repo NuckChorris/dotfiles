@@ -6,6 +6,7 @@ set nocompatible
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
+call pathogen#helptags()
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -36,6 +37,12 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
+" Gundo Key
+nnoremap <F5> :GundoToggle<CR>
+
+" Make arrow keys n' shit wrap
+set whichwrap+=<,>,h,l,[,]
+
 " ----------------------------------------------------------------------------
 "  UI
 " ----------------------------------------------------------------------------
@@ -45,7 +52,8 @@ set number
 set scrolloff=3
 set laststatus=2
 set showmatch
-set mat=5
+set mat=1
+set showcmd
 
 " Wrapping preeeeetty
 set cpoptions+=n

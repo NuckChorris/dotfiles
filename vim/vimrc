@@ -54,6 +54,10 @@ set laststatus=2
 set showmatch
 set mat=1
 set showcmd
+set timeoutlen=2000
+
+" Disable audible bell, enable visual bell.
+set visualbell
 
 " Wrapping preeeeetty
 set cpoptions+=n

@@ -67,6 +67,13 @@ let &showbreak = '  │ '
 syntax on
 colorscheme molokai
 
+" Style indent guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 1
+hi! link IndentGuidesOdd Visual
+hi! link IndentGuidesEven LineNr
+
 " Mouse Selection
 set selectmode+=mouse
 set mouse=a

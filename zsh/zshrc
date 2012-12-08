@@ -12,7 +12,7 @@ LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
 #	TITLE="$1"
 #}
 alias ll="ls -alF"
-alias vim="vim -c start"
+#alias vim="vim -c start"
 alias ssx="ssh -C -X -c blowfish"
 alias steve="ssx plejeck@67.182.84.162 -p 50"
 npmgh () {

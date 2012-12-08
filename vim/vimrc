@@ -34,22 +34,14 @@ nnoremap <Down> gj
 nnoremap <Up> gk
 vnoremap <Down> gj
 vnoremap <Up> gk
-"inoremap <Down> <C-o>gj
-"inoremap <Up> <C-o>gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
 
 " Gundo Key
 nnoremap <F5> :GundoToggle<CR>
 
 " Make arrow keys n' shit wrap
 set whichwrap+=<,>,h,l,[,]
-
-" Completion Menu shits
-inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<C-o>gj"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<C-o>gk"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " ----------------------------------------------------------------------------
 "  UI

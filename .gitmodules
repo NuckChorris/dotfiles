@@ -25,3 +25,6 @@
 [submodule "vim/bundle/nginx.vim"]
 	path = vim/bundle/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
+[submodule "vim/bundle/webapi-vim"]
+	path = vim/bundle/webapi-vim
+	url = git://github.com/mattn/webapi-vim.git

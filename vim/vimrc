@@ -93,3 +93,5 @@ set completeopt=longest,menuone
 set selectmode+=mouse
 set mouse=a
 
+" Change the separator character to use vertical bar instead of pipe
+set fillchars+=vert:│

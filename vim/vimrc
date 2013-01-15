@@ -39,6 +39,7 @@ inoremap <Up> <C-o>gk
 
 " Gundo Key
 nnoremap <F5> :GundoToggle<CR>
+inoremap <F5> <C-o>:GundoToggle<CR>
 
 " Make arrow keys n' shit wrap
 set whichwrap+=<,>,h,l,[,]

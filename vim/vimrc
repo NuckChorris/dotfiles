@@ -66,6 +66,7 @@ let &showbreak = '  │ '
 " Code Folding
 set foldmethod=indent
 set foldnestmax=5
+set foldlevel=3
 
 " Syntax Highlighting
 syntax on

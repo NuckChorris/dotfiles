@@ -1,8 +1,8 @@
-# Configure Terminal
+############
+## Design
+###########
 PROMPT="%F{cyan}%n%B%F{black}@%F{blue}%m%F{black}:%b$f%~%B%F{black}$ %f%b"
 RPROMPT=$'%B%F{black}$(vcs_info_wrapper)%f%b'
-PATH="$PATH:~/bin"
-EDITOR="subl -w"
 LS_COLORS="di=37:ln=1:so=1:pi=1:ex=1:bd=33:cd=35:su=1:sg=1;47:tw=1:ow=1;46"
 LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
 
@@ -11,13 +11,36 @@ LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
 #	print -Pn "\e]0;$1\a"
 #	TITLE="$1"
 #}
+
+##############
+## Settings
+#############
+
+PATH="/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH:~/bin"
+EDITOR="vim"
+
+# Make it so cd-ing into ~/Code stuff is easier.
+cdpath=(. ~/Code/ $cdpath)
+
+
+##################################
+## Custom Functions And Aliases
+#################################
+
+# List all
 alias ll="ls -alF"
 #alias vim="vim -c start"
+
+# Remote X over SSH
 alias ssx="ssh -C -X -c blowfish"
 alias steve="ssx plejeck@67.182.84.162 -p 50"
+
+# NPM utilities
+# npmgh - Pull up the github for an npm module
 npmgh () {
 	open $(npm view $1 repository.url | sed s/git\:/https\:/ | sed s/\\\\.git//)
 }
+# npmv - Display the latest version of an npm module
 npmv () {
 	npm info $1 dist-tags.latest
 }
@@ -38,7 +61,11 @@ npmv () {
 #	fi
 #}
 
-# Hooks to provide for git prompt
+
+##############
+## VCS info
+#############
+
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '%F{242}%s%F{238}-%F{247}%b %F{238}(%F{244}%a%F{238})%f'
@@ -47,7 +74,6 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 
 zstyle ':vcs_info:*' enable git cvs svn
 
-# or use pre_cmd, see man zshcontrib
 vcs_info_wrapper() {
 	vcs_info
 	if [ -n "$vcs_info_msg_0_" ]; then
@@ -55,18 +81,31 @@ vcs_info_wrapper() {
 	fi
 }
 
-# Enable colors
-# Replace BSD LS with GNU LS
+
+############
+## Colors
+###########
+
+# Replace BSD LS with GNU LS, if GNU LS is installed
+# BSD LS has shitty support for colors, so yeah.
 command -v gls >/dev/null 2>&1 && {
 	alias ls="gls --color"
 } || {
 	alias ls="ls --color"
 }
+
+# Now replace all the greps!
+# I'm gonna be honest, I forget what fgrep and egrep are.
+# But the place I grabbed this from had them, so w/e
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 
-# Keybindings
+
+#################
+## Keybindings
+################
+
 bindkey "^[[H" beginning-of-line
 bindkey "^[[1~" beginning-of-line
 bindkey "^[OH" beginning-of-line
@@ -75,10 +114,11 @@ bindkey "^[[4~" end-of-line
 bindkey "^[OF" end-of-line
 
 
-# Make it so cd-ing into ~/Code stuff is easier
-cdpath=(. ~/Code/ $cdpath)
+##################
+# Source Things
+#################
 
-# Source NVM if installed
+# Source Node Version Manager, if installed.
 command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 	. ~/nvm/nvm.sh
 }

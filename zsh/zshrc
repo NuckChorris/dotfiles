@@ -6,11 +6,6 @@ RPROMPT=$'%B%F{black}$(vcs_info_wrapper)%f%b'
 LS_COLORS="di=37:ln=1:so=1:pi=1:ex=1:bd=33:cd=35:su=1:sg=1;47:tw=1:ow=1;46"
 LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
 
-# Aliases and custom functions
-#settitle () {
-#	print -Pn "\e]0;$1\a"
-#	TITLE="$1"
-#}
 
 ##############
 ## Settings
@@ -29,11 +24,9 @@ cdpath=(. ~/Code/ $cdpath)
 
 # List all
 alias ll="ls -alF"
-#alias vim="vim -c start"
 
 # Remote X over SSH
 alias ssx="ssh -C -X -c blowfish"
-alias steve="ssx plejeck@67.182.84.162 -p 50"
 
 # NPM utilities
 # npmgh - Pull up the github for an npm module
@@ -44,22 +37,6 @@ npmgh () {
 npmv () {
 	npm info $1 dist-tags.latest
 }
-
-# Add hooks
-#precmd () {
-#	if [[ -z $TITLE ]]; then
-#		settitle "%n@%m:%~"
-#	else
-#		settitle "$TITLE (%~)"
-#	fi
-#}
-#preexec () {
-#	if [[ -z $TITLE ]]; then
-#		settitle "$2"
-#	else
-#		settitle "$TITLE ($2)"
-#	fi
-#}
 
 
 ##############
@@ -122,7 +99,3 @@ bindkey "^[OF" end-of-line
 command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 	. ~/nvm/nvm.sh
 }
-
-# Set up environment
-#cd ~/Code
-

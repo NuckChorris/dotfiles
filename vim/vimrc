@@ -104,3 +104,7 @@ set mouse=a
 
 " Change the separator character to use vertical bar instead of pipe
 set fillchars+=vert:│
+
+" Hide scrollbars in GUI
+set guioptions-=L
+set guioptions-=r

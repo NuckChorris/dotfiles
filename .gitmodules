@@ -19,9 +19,6 @@
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
 	url = git://github.com/tomasr/molokai.git
-[submodule "vim/bundle/clang_complete"]
-	path = vim/bundle/clang_complete
-	url = git://github.com/Rip-Rip/clang_complete.git
 [submodule "vim/bundle/nginx.vim"]
 	path = vim/bundle/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
@@ -37,3 +34,6 @@
 [submodule "vim/bundle/buffergator"]
 	path = vim/bundle/buffergator
 	url = git://github.com/jeetsukumaran/vim-buffergator.git
+[submodule "vim/bundle/youcompleteme"]
+	path = vim/bundle/youcompleteme
+	url = git://github.com/Valloric/YouCompleteMe.git

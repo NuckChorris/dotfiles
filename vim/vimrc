@@ -94,16 +94,6 @@ let g:indent_guides_start_level = 1
 hi! link IndentGuidesOdd Normal
 hi! link IndentGuidesEven LineNr
 
-" Configure clang completions
-let g:clang_auto_select = 1
-let g:clang_use_library = 1
-let g:clang_complete_macros = 1
-let g:clang_complete_patterns = 1
-
-" Completion improvements
-
-set completeopt=longest,menuone
-
 " Mouse Selection
 set selectmode+=mouse
 set mouse=a

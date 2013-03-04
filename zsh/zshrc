@@ -28,6 +28,31 @@ alias ll="ls -alF"
 # Remote X over SSH
 alias ssx="ssh -C -X -c blowfish"
 
+# Protocol handlers
+alias http://='open http://'
+alias https://='open https://'
+alias ftp://='open ftp://'
+alias sftp://='open sftp://'
+alias irc://='open irc://'
+
+# URL Handlers
+alias -s com='noglob url'
+alias -s org='noglob url'
+alias -s net='noglob url'
+alias -s edu='noglob url'
+alias -s html='open'
+
+# Compression handlers.  We assume tarballs, not naked compressed files.
+alias -s bz2='tar -xjvf'
+alias -s gz='tar -xzvf'
+alias -s xz='tar -xJvf'
+
+# Image Formats
+alias -s gif='open'
+alias -s jpg='open'
+alias -s jpeg='open'
+alias -s png='open'
+
 # NPM utilities
 # npmgh - Pull up the github for an npm module
 npmgh () {

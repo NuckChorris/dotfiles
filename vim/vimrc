@@ -52,6 +52,9 @@ inoremap <F3> <C-o>:NERDTreeToggle<CR>
 nnoremap <F2> :BuffergatorToggle<CR>
 inoremap <F2> <C-o>:BuffergatorToggle<CR>
 
+" Relative Line Numbering Toggle Key
+nnoremap <C-r> :exec &relativenumber == 1 ? "set number!" : "set relativenumber!"<CR>
+
 " Make arrow keys n' shit wrap
 set whichwrap+=<,>,h,l,[,]
 
@@ -78,7 +81,7 @@ let &showbreak = '  │ '
 " Code Folding
 set foldmethod=indent
 set foldnestmax=5
-set foldlevel=3
+set foldlevel=5
 
 " Syntax Highlighting
 syntax on

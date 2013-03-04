@@ -4,7 +4,7 @@
 
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = subl -w
+	editor = mvim -f
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -34,3 +34,5 @@
 	added = green
 	changed = yellow dim
 	untracked = black bold
+[github]
+	user = NuckChorris

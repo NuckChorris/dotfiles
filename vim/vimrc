@@ -17,6 +17,9 @@ filetype plugin indent on
 set tabstop=3
 set shiftwidth=3
 
+" Make Ruby indents spaces.  It hurts, but it has to be done :(
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 expandtab
+
 
 " ----------------------------------------------------------------------------
 "  Remapping

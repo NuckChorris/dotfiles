@@ -49,11 +49,15 @@ vim_clean:
 
 # ZSHELL
 
-zsh: zshrc
+zsh: zshdir zshrc
 ZSH = $(PWD)/zsh/
 
+zshdir:
+	ln -s $(ZSH)/zsh ~/.zsh
+
 zshrc:
-	ln -s $(ZSH)/zshrc ~/.zshrc
+	ln -s ~/.zsh/zshrc ~/.zshrc
 
 zsh_clean:
+	mv ~/.zsh/ ~/.zsh.old
 	mv ~/.zshrc ~/.zshrc.old

@@ -1,0 +1,57 @@
+#!/bin/zsh
+
+# This is a rather roundabout way of determining the location of the zilsh script, which all other
+# directories should be relative to (though this behavior is customizable by setting the $ZSH
+# variable yourself.
+
+command -v greadlink >/dev/null 2>&1 && {
+	# On OS X, if the GNU readlink(1) is installed, we use that instead of readlink
+	ZSH=$(greadlink -f $(dirname $0))
+} || {
+	# Basically, this code uses dirname(1) to process the script's path and get only the dir, then
+	# feeds that into readlink using the --canonicalize/-f flag to turn it into an absolute path.
+	ZSH=$(readlink -f $(dirname $0))
+} 2>/dev/null || {
+	echo "___ERROR___"
+	echo "Your readlink implementation lacks the --canonicalize flag."
+	echo "If you are on OS X, install the GNU coreutils package."
+	echo "It is strongly recommended that you remedy this before continuing."
+	echo "___________"
+}
+
+# Sets up the functions/ and completions/ directories
+fpath=($ZSH/functions $ZSH/completions $fpath)
+
+# Load all of the config files in configs/ that end in .zsh
+if [ -d "$ZSH/configs" ]; then
+	for config_file ($ZSH/configs/*.zsh); do
+		source $config_file
+	done
+fi
+
+# Add all defined plugins to the function path. This must be done before running compinit.
+for plugin ($plugins); do
+	if test -f $ZSH/plugins/$name/$name.plugin.zsh || test -f $ZSH/plugins/$name/_$name; then
+		fpath=($ZSH/plugins/$plugin $fpath)
+	else
+		echo "Could not find plugin '$plugin'."
+	fi
+done
+
+# Load and run compinit
+autoload -U compinit
+compinit -id "/tmp/.zcompdump"
+
+# Load all defined plugins.
+for plugin ($plugins); do
+	if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+		source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+	fi
+done
+
+# Load the theme
+if [ ! "$ZSH_THEME" = ""  ]; then
+	if [ -f "$ZSH/themes/$ZSH_THEME.zsh-theme" ]; then
+		source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+	fi
+fi

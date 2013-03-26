@@ -1,19 +1,14 @@
-source ~/.zsh/zilsh
 
 ############
 ## Design
 ###########
-PROMPT="%F{cyan}%n%B%F{black}@%F{blue}%m%F{black}:%b$f%~%B%F{black}$ %f%b"
-RPROMPT=$'%B%F{black}$(vcs_info_wrapper)%f%b'
-LS_COLORS="di=37:ln=1:so=1:pi=1:ex=1:bd=33:cd=35:su=1:sg=1;47:tw=1:ow=1;46"
-LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
-
+ZSH_THEME="nuck"
 
 ##############
 ## Settings
 #############
 
-PATH="/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH:~/bin"
+PATH="$PATH:~/bin"
 EDITOR="vim"
 
 # Make it so cd-ing into ~/Code stuff is easier.
@@ -23,37 +18,6 @@ cdpath=(. ~/Code/ $cdpath)
 ##################################
 ## Custom Functions And Aliases
 #################################
-
-# List all
-alias ll="ls -alF"
-
-# Remote X over SSH
-alias ssx="ssh -C -X -c blowfish"
-
-# Protocol handlers
-alias http://='open http://'
-alias https://='open https://'
-alias ftp://='open ftp://'
-alias sftp://='open sftp://'
-alias irc://='open irc://'
-
-# URL Handlers
-alias -s com='noglob url'
-alias -s org='noglob url'
-alias -s net='noglob url'
-alias -s edu='noglob url'
-alias -s html='open'
-
-# Compression handlers.  We assume tarballs, not naked compressed files.
-alias -s bz2='tar -xjvf'
-alias -s gz='tar -xzvf'
-alias -s xz='tar -xJvf'
-
-# Image Formats
-alias -s gif='open'
-alias -s jpg='open'
-alias -s jpeg='open'
-alias -s png='open'
 
 # If mvim is installed, use that instead of vim
 command -v mvim >/dev/null 2>&1 && {
@@ -131,3 +95,6 @@ bindkey "^[OF" end-of-line
 command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 	. ~/nvm/nvm.sh
 }
+
+
+source ~/.zsh/zilsh

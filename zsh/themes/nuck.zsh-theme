@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 BKG_LIGHT=false
 
 zstyle ':vcs_info:*' actionformats '%F{242}%s%F{238}-%F{247}%b %F{238}(%F{244}%a%F{238})%f'

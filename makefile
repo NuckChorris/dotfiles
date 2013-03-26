@@ -53,7 +53,7 @@ zsh: zshdir zshrc
 ZSH = $(PWD)/zsh/
 
 zshdir:
-	ln -s $(ZSH)/zsh ~/.zsh
+	ln -s $(ZSH) ~/.zsh
 
 zshrc:
 	ln -s ~/.zsh/zshrc ~/.zshrc

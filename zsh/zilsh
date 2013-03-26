@@ -53,5 +53,7 @@ done
 if [ ! "$ZSH_THEME" = ""  ]; then
 	if [ -f "$ZSH/themes/$ZSH_THEME.zsh-theme" ]; then
 		source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+	else
+		echo "Could not find theme '$ZSH_THEME'."
 	fi
 fi

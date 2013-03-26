@@ -53,6 +53,11 @@ alias -s jpg='open'
 alias -s jpeg='open'
 alias -s png='open'
 
+# If mvim is installed, use that instead of vim
+command -v mvim >/dev/null 2>&1 && {
+	alias vim="mvim -v"
+}
+
 # NPM utilities
 # npmgh - Pull up the github for an npm module
 npmgh () {

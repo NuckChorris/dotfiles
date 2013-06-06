@@ -43,3 +43,6 @@
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/github-colors"]
+	path = vim/bundle/github-colors
+	url = git://github.com/croaky/vim-colors-github.git

@@ -70,6 +70,7 @@ set showmatch
 set mat=1
 set showcmd
 set timeoutlen=2000
+set colorcolumn=80
 
 " Disable audible bell, enable visual bell.
 set visualbell

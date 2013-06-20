@@ -1,7 +1,9 @@
 # Idiocy from editors
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
 *~
-*.swp
-*.sublime-workspace
 
 # Idiocy from OSes
 .DS_Store

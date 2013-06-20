@@ -30,3 +30,7 @@
 
 [github]
 	user = NuckChorris
+[push]
+	default = simple
+[merge]
+	defaultToUpstream = true

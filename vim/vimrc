@@ -55,6 +55,13 @@ inoremap <F2> <C-o>:BuffergatorToggle<CR>
 " Relative Line Numbering Toggle Key
 nnoremap <C-r> :exec &relativenumber == 1 ? "set number!" : "set relativenumber!"<CR>
 
+" Tab stuff
+noremap <C-e>l :tabnext<CR>
+noremap <C-e><Right> :tabnext<CR>
+noremap <C-e>h :tabprev<CR>
+noremap <C-e><Left> :tabprev<CR>
+noremap <C-e>n :tabnew<CR>
+
 " Make arrow keys n' shit wrap
 set whichwrap+=<,>,h,l,[,]
 

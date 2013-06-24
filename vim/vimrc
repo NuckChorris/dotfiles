@@ -52,6 +52,9 @@ inoremap <F3> <C-o>:NERDTreeToggle<CR>
 nnoremap <F2> :BuffergatorToggle<CR>
 inoremap <F2> <C-o>:BuffergatorToggle<CR>
 
+" Murder Help key
+noremap <F1> <Nop>
+
 " Relative Line Numbering Toggle Key
 nnoremap <C-r> :exec &relativenumber == 1 ? "set number!" : "set relativenumber!"<CR>
 

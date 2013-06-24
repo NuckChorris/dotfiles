@@ -69,7 +69,7 @@ noremap <leader>en :tabnew<CR>
 set whichwrap+=<,>,h,l,[,]
 
 " ----------------------------------------------------------------------------
-"  UI
+"  UI and Behavior
 " ----------------------------------------------------------------------------
 
 set ruler
@@ -80,6 +80,7 @@ set laststatus=2
 set showmatch
 set mat=1
 set showcmd
+set undofile
 set timeoutlen=2000
 set colorcolumn=80
 

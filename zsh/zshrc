@@ -11,7 +11,7 @@ LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
 ## Settings
 #############
 
-PATH="/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH:~/bin"
+PATH="$PATH:~/bin"
 EDITOR="vim"
 
 # Make it so cd-ing into ~/Code stuff is easier.
@@ -129,3 +129,6 @@ bindkey "^[OF" end-of-line
 command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 	. ~/nvm/nvm.sh
 }
+
+# Add Rubygems to our PATH
+PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"

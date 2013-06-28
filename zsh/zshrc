@@ -57,6 +57,10 @@ alias -s png='open'
 command -v mvim >/dev/null 2>&1 && {
 	alias vim="mvim -v"
 }
+# But maybe gvim is installed
+command -v gvim >/dev/null 2>&1 && {
+	alias vim="gvim -f"
+}
 
 # NPM utilities
 # npmgh - Pull up the github for an npm module

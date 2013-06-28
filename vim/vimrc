@@ -25,6 +25,9 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 expandtab
 "  Remapping
 " ----------------------------------------------------------------------------
 
+" Change leader to something saner
+let mapleader=","
+
 " exit to normal mode with 'jj'
 inoremap jj <ESC>
 

@@ -44,22 +44,19 @@ inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
 " Gundo Key
-nnoremap <F4> :GundoToggle<CR>
-inoremap <F4> <C-o>:GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
 
 " NERDTree Key
-nnoremap <F3> :NERDTreeToggle<CR>
-inoremap <F3> <C-o>:NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
 
 " Buffergator Key
-nnoremap <F2> :BuffergatorToggle<CR>
-inoremap <F2> <C-o>:BuffergatorToggle<CR>
+nnoremap <leader>b :BuffergatorToggle<CR>
 
 " Murder Help key
 noremap <F1> <Nop>
 
 " Relative Line Numbering Toggle Key
-nnoremap <C-r> :exec &relativenumber == 1 ? "set number!" : "set relativenumber!"<CR>
+nnoremap <leader>r :exec &relativenumber == 1 ? "set number!" : "set relativenumber!"<CR>
 
 " Tab stuff
 noremap <leader>el :tabnext<CR>

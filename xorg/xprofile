@@ -1,0 +1,21 @@
+# Start systemd
+/usr/lib/systemd/systemd --user &
+
+# Start Compositor
+compton --blur-background --backend glx --glx-no-stencil --glx-use-copysubbuffermesa -m 0.9 &
+
+# Start thunar daemon
+thunar --daemon &
+
+# Start mpd
+mpd &
+mpdscribble &
+
+# Start SSH Agent
+eval $(ssh-agent)
+
+# Load Xmodmap
+[ -f $HOME/.xmodmap ] && xmodmap $HOME/.xmodmap
+
+# Load Xresources
+[ -f $HOME/.xresources ] && xrdb $HOME/.xresources

@@ -61,3 +61,14 @@ zshrc:
 zsh_clean:
 	mv ~/.zsh/ ~/.zsh.old
 	mv ~/.zshrc ~/.zshrc.old
+
+# AWESOME
+
+awesome: awesomedir
+AWESOME = $(PWD)/awesome/
+
+awesomedir:
+	ln -s $(AWESOME) ~/.config/awesome
+
+awesome_clean:
+	mv ~/.config/awesome ~/.config/awesome.old

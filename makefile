@@ -61,3 +61,34 @@ zshrc:
 zsh_clean:
 	mv ~/.zsh/ ~/.zsh.old
 	mv ~/.zshrc ~/.zshrc.old
+
+
+# AWESOME
+
+awesome: awesomedir
+AWESOME = $(PWD)/awesome/
+
+awesomedir:
+	ln -s $(AWESOME) ~/.config/awesome
+
+awesome_clean:
+	mv ~/.config/awesome ~/.config/awesome.old
+
+# XORG
+
+xorg: xmodmap xprofile xresources
+XORG = $(PWD)/xorg/
+
+xmodmap:
+	ln -s $(XORG)/xmodmap ~/.xmodmap
+
+xprofile:
+	ln -s $(XORG)/xprofile ~/.xprofile
+
+xresources:
+	ln -s $(XORG)/xresources ~/.xresources
+
+xorg_clean:
+	mv ~/.xmodmap ~/.xmodmap.old
+	mv ~/.xprofile ~/.xprofile.old
+	mv ~/.xresources ~/.xresources.old

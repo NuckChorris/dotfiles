@@ -47,7 +47,7 @@ inoremap <Up> <C-o>gk
 nnoremap <leader>u :GundoToggle<CR>
 
 " NERDTree Key
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
 
 " Buffergator Key
 nnoremap <leader>b :BuffergatorToggle<CR>

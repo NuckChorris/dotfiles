@@ -72,3 +72,23 @@ awesomedir:
 
 awesome_clean:
 	mv ~/.config/awesome ~/.config/awesome.old
+
+# XORG
+
+xorg: xmodmap xprofile xresources
+XORG = $(PWD)/xorg/
+
+xmodmap:
+	ln -s $(XORG)/xmodmap ~/.xmodmap
+
+xprofile:
+	ln -s $(XORG)/xprofile ~/.xprofile
+
+xresources:
+	ln -s $(XORG)/xresources ~/.xresources
+
+xorg_clean:
+	mv ~/.xmodmap ~/.xmodmap.old
+	mv ~/.xprofile ~/.xprofile.old
+	mv ~/.xresources ~/.xresources.old
+

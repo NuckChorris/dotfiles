@@ -65,6 +65,16 @@ noremap <leader>eh :tabprev<CR>
 noremap <leader>e<Left> :tabprev<CR>
 noremap <leader>en :tabnew<CR>
 
+" Split stuff
+nnoremap <leader>swh :topleft vnew<CR>
+nnoremap <leader>swl :botright vnew<CR>
+nnoremap <leader>swj :botright new<CR>
+nnoremap <leader>swk :topleft new<CR>
+nnoremap <leader>sh :leftabove vnew<CR>
+nnoremap <leader>sl :rightbelow vnew<CR>
+nnoremap <leader>sj :rightbelow new<CR>
+nnoremap <leader>sk :leftabove new<CR>
+
 " Make arrow keys n' shit wrap
 set whichwrap+=<,>,h,l,[,]
 

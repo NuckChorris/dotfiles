@@ -1,3 +1,7 @@
+autoload -U colors && colors
+source ~/.zsh/zilsh/zilsh.zsh
+_zilsh_init ~/.zsh/bundle
+
 ############
 ## Design
 ###########

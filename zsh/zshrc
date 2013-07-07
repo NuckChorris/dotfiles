@@ -29,6 +29,11 @@ cdpath=(. ~/Code/ $cdpath)
 # List all
 alias ll="ls -alF"
 
+# git aliases
+alias gch="git checkout"
+alias gco="git commit"
+alias gadd="git add"
+
 # Remote X over SSH
 alias ssx="ssh -C -X -c blowfish"
 

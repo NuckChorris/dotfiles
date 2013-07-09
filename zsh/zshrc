@@ -33,6 +33,8 @@ alias ll="ls -alF"
 alias gch="git checkout"
 alias gco="git commit"
 alias gadd="git add"
+alias glog="git log --all"
+alias giraffe="git log --graph --pretty=oneline --abbrev-commit"
 
 # Remote X over SSH
 alias ssx="ssh -C -X -c blowfish"

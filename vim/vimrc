@@ -37,12 +37,6 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
 
 " Gundo Key
 nnoremap <leader>u :GundoToggle<CR>
@@ -75,6 +69,16 @@ nnoremap <leader>sh :leftabove vnew<CR>
 nnoremap <leader>sl :rightbelow vnew<CR>
 nnoremap <leader>sj :rightbelow new<CR>
 nnoremap <leader>sk :leftabove new<CR>
+
+" Get rid of the arrow keys, because I really need to learn Vim better
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 " Make arrow keys n' shit wrap
 set whichwrap+=<,>,h,l,[,]

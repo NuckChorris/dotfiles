@@ -52,3 +52,6 @@
 [submodule "zsh/zilsh"]
 	path = zsh/zilsh
 	url = git@github.com:NuckChorris/zilsh.git
+[submodule "vim/bundle/javascript-syntax"]
+	path = vim/bundle/javascript-syntax
+	url = git@github.com:jelera/vim-javascript-syntax.git

@@ -83,6 +83,12 @@ npmv () {
 	npm info $1 dist-tags.latest
 }
 
+# Tail by screenfuls
+stail () {
+	integer l=$(($LINES * $1))
+	head -n$l $2
+}
+
 
 ##############
 ## VCS info

@@ -83,10 +83,14 @@ npmv () {
 	npm info $1 dist-tags.latest
 }
 
-# Tail by screenfuls
+# Tail/head by screenfuls
 stail () {
 	integer l=$(($LINES * $1))
-	head -n$l $2
+	tail -n$l $2
+}
+shead () {
+	integer l=$(($LINES * $1))
+	head -n $l $2
 }
 
 

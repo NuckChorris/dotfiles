@@ -153,3 +153,5 @@ command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 
 # Add Rubygems to our PATH
 PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

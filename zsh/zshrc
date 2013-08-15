@@ -155,5 +155,9 @@ command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 	. ~/nvm/nvm.sh
 }
 
+command -v ~/.rvm/scripts/rvm >/dev/null 2>&1 && {
+	source $HOME/.rvm/scripts/rvm
+}
+
 # Add Rubygems to our PATH
 PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"

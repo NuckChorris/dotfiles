@@ -1,0 +1,20 @@
+# Write your default config options here!
+
+##################
+# video settings #
+##################
+
+fs=yes
+
+##################
+# audio settings #
+##################
+
+ao=pulse
+
+##################
+# other settings #
+##################
+
+screenshot-format=png
+screenshot-template="/home/plejeck/Pictures/Screencaps/mpv-%F-%P"

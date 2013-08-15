@@ -92,3 +92,14 @@ xorg_clean:
 	mv ~/.xmodmap ~/.xmodmap.old
 	mv ~/.xprofile ~/.xprofile.old
 	mv ~/.xresources ~/.xresources.old
+
+# MPV
+
+mpv: mpvdir
+MPV = $(PWD)/mpv/
+
+mpvdir:
+	ln -s $(MPV) ~/.mpv
+
+mpv_clean:
+	mv ~/.mpv ~/.mpv.old

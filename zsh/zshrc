@@ -1,5 +1,8 @@
 autoload -U colors && colors
 source ~/.zsh/zilsh/zilsh.zsh
+
+omz_plugins=(archlinux bundler capistrano git-extras github node npm rails4 rvm rsync tmux)
+
 _zilsh_init ~/.zsh/bundle
 
 ############

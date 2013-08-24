@@ -5,6 +5,11 @@ omz_plugins=(archlinux bundler capistrano git-extras github node npm rails4 rvm 
 
 _zilsh_init ~/.zsh/bundle
 
+echo   "     +======= PACMAN STATUS =======+ "
+printf "     | %-27s |\n" "$(_pacfiles | wc -l) pacfiles found."
+printf "     | %-27s |\n" "$(_pacupdates | wc -l) updates available."
+echo   "     +-----------------------------+ "
+
 ############
 ## Design
 ###########

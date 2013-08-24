@@ -55,3 +55,6 @@
 [submodule "vim/bundle/javascript-syntax"]
 	path = vim/bundle/javascript-syntax
 	url = git@github.com:jelera/vim-javascript-syntax.git
+[submodule "zsh/bundle/oh-my-zilsh"]
+	path = zsh/bundle/oh-my-zilsh
+	url = git@github.com:NuckChorris/oh-my-zilsh.git

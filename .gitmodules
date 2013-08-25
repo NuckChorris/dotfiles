@@ -46,9 +46,6 @@
 [submodule "vim/bundle/github-colors"]
 	path = vim/bundle/github-colors
 	url = git://github.com/croaky/vim-colors-github.git
-[submodule "vim/bundle/smart-tabs"]
-	path = vim/bundle/smart-tabs
-	url = git://github.com/vim-scripts/Smart-Tabs.git
 [submodule "zsh/zilsh"]
 	path = zsh/zilsh
 	url = git@github.com:NuckChorris/zilsh.git

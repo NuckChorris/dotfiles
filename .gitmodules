@@ -48,13 +48,13 @@
 	url = git://github.com/croaky/vim-colors-github.git
 [submodule "zsh/zilsh"]
 	path = zsh/zilsh
-	url = git@github.com:NuckChorris/zilsh.git
+	url = git://github.com/NuckChorris/zilsh.git
 [submodule "vim/bundle/javascript-syntax"]
 	path = vim/bundle/javascript-syntax
-	url = git@github.com:jelera/vim-javascript-syntax.git
+	url = git://github.com/jelera/vim-javascript-syntax.git
 [submodule "zsh/bundle/oh-my-zilsh"]
 	path = zsh/bundle/oh-my-zilsh
-	url = git@github.com:NuckChorris/oh-my-zilsh.git
+	url = git://github.com/NuckChorris/oh-my-zilsh.git
 [submodule "zsh/bundle/pacman"]
 	path = zsh/bundle/pacman
-	url = git@github.com:NuckChorris/pacman-zilsh.git
+	url = git://github.com/NuckChorris/pacman-zilsh.git

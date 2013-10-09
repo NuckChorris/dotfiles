@@ -47,20 +47,6 @@ alias giraffe="git log --graph --pretty=oneline --abbrev-commit"
 # Remote X over SSH
 alias sex="ssh -C -X -c blowfish"
 
-# Protocol handlers
-alias http://='xdg-open http://'
-alias https://='xdg-open https://'
-alias ftp://='xdg-open ftp://'
-alias sftp://='xdg-open sftp://'
-alias irc://='xdg-open irc://'
-
-# URL Handlers
-alias -s com='noglob url'
-alias -s org='noglob url'
-alias -s net='noglob url'
-alias -s edu='noglob url'
-alias -s html='xdg-open'
-
 # Compression handlers.  We assume tarballs, not naked compressed files.
 alias -s bz2='tar -xjvf'
 alias -s gz='tar -xzvf'

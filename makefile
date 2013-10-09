@@ -62,7 +62,6 @@ zsh_clean:
 	mv ~/.zsh/ ~/.zsh.old
 	mv ~/.zshrc ~/.zshrc.old
 
-
 # AWESOME
 
 awesome: awesomedir

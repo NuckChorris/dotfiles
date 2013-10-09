@@ -48,18 +48,18 @@ alias giraffe="git log --graph --pretty=oneline --abbrev-commit"
 alias sex="ssh -C -X -c blowfish"
 
 # Protocol handlers
-alias http://='open http://'
-alias https://='open https://'
-alias ftp://='open ftp://'
-alias sftp://='open sftp://'
-alias irc://='open irc://'
+alias http://='xdg-open http://'
+alias https://='xdg-open https://'
+alias ftp://='xdg-open ftp://'
+alias sftp://='xdg-open sftp://'
+alias irc://='xdg-open irc://'
 
 # URL Handlers
 alias -s com='noglob url'
 alias -s org='noglob url'
 alias -s net='noglob url'
 alias -s edu='noglob url'
-alias -s html='open'
+alias -s html='xdg-open'
 
 # Compression handlers.  We assume tarballs, not naked compressed files.
 alias -s bz2='tar -xjvf'
@@ -67,10 +67,10 @@ alias -s gz='tar -xzvf'
 alias -s xz='tar -xJvf'
 
 # Image Formats
-alias -s gif='open'
-alias -s jpg='open'
-alias -s jpeg='open'
-alias -s png='open'
+alias -s gif='xdg-open'
+alias -s jpg='xdg-open'
+alias -s jpeg='xdg-open'
+alias -s png='xdg-open'
 
 # If mvim is installed, use that instead of vim
 command -v mvim >/dev/null 2>&1 && {

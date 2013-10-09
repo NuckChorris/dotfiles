@@ -88,6 +88,7 @@ set whichwrap+=<,>,h,l,[,]
 set ruler
 set number
 set scrolloff=3
+set display=lastline
 set laststatus=2
 set showmatch
 set mat=1
@@ -110,7 +111,7 @@ set foldlevel=5
 
 " Syntax Highlighting
 syntax on
-colorscheme molokai
+colorscheme github
 
 " Style indent guides
 let g:indent_guides_auto_colors = 0
@@ -129,3 +130,13 @@ set fillchars+=vert:│
 " Hide scrollbars in GUI
 set guioptions-=L
 set guioptions-=r
+
+" Set font for GUI
+if has('gui_running')
+	set guifont=M+\ 1m\ Ultra-Light\ 10
+endif
+
+" ----------------------------------------------------------------------------
+"  File Formats
+" ----------------------------------------------------------------------------
+au BufNewFile,BufRead *.jsm set filetype=javascript

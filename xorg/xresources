@@ -1,0 +1,57 @@
+! Enable alpha channel
+URxvt.depth: 32
+
+! Set base URxvt.colors
+URxvt.background:  [80]#E7E7E7
+URxvt.foreground:  #30343A
+URxvt.cursorColor: #30343A
+
+! Scrollbar at right
+URxvt.scrollColor: #d0d0d0
+URxvt.troughColor: #E7E7E7
+URxvt.scrollBar_right: 1
+
+! Black
+URxvt.color0: #241F19
+URxvt.color8: #635645
+! Red
+URxvt.color1: #BA4B38
+URxvt.color9: #F76757
+! Green
+URxvt.color2: #40733E
+URxvt.color10: #5EAB5C
+! Yellow
+URxvt.color3: #CF954A
+URxvt.color11: #FDC66F
+! Blue
+URxvt.color4: #4E6A99
+URxvt.color12: #7097DB
+! Magenta
+URxvt.color5: #74618C
+URxvt.color13: #B094D1
+! Cyan
+URxvt.color6: #408F99
+URxvt.color14: #73CDD9
+! White
+URxvt.color7: #A4A4A6
+URxvt.color15: #CACACC
+
+! Load Perl extensions
+!URxvt.perl-ext-common: default, url-select, clipboard
+
+URxvt.perl-ext: default,matcher,clipboard
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+
+! Clickable URLs
+!URxvt.url-select.launcher: /usr/bin/firefox
+!URxvt.url-select.button: 1
+
+! Clipboard
+URxvt.keysym.M-C:   perl:clipboard:copy
+URxvt.keysym.M-V:   perl:clipboard:paste
+URxvt.keysym.M-C-V: perl:clipboard:paste_escaped
+
+! Font
+URxvt.font: xft:Ubuntu Mono:size=8,xft:Monaco:size=7

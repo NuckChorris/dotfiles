@@ -4,7 +4,7 @@
 
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = gvim -f
+	editor = vim
 
 [color]
 	ui = auto

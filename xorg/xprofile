@@ -7,6 +7,9 @@ compton --blur-background --backend glx --glx-no-stencil --glx-use-copysubbuffer
 # Start thunar daemon
 thunar --daemon &
 
+# start flux
+xflux -l 37.639 -g -120.997 -k 4500
+
 # Start mpd
 mpd &
 mpdscribble &

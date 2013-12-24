@@ -16,5 +16,6 @@ ao=pulse
 # other settings #
 ##################
 
+osc=no
 screenshot-format=png
 screenshot-template="/home/plejeck/Pictures/Screencaps/mpv-%F-%P"

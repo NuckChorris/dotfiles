@@ -78,6 +78,11 @@ nnoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 
+" Swap Ctrl+O and Ctrl+Q to make quick normal mode stuff easier
+inoremap <c-o> <c-q>
+inoremap <c-q> <c-o>
+inoremap <c-w> <c-o><c-w>
+
 " Make arrow keys n' shit wrap
 set whichwrap+=<,>,h,l,[,]
 

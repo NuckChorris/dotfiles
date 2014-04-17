@@ -5,6 +5,7 @@
 ##################
 
 fs=yes
+vo=opengl
 
 ##################
 # audio settings #
@@ -16,6 +17,12 @@ ao=pulse
 # other settings #
 ##################
 
-osc=no
+osc=yes
+osd-bar-align-y=0.7
+osd-blur=5
+ass-hinting=light
+hwdec=vaapi
+alang=jpn
+slang=eng
 screenshot-format=png
 screenshot-template="/home/plejeck/Pictures/Screencaps/mpv-%F-%P"

@@ -118,12 +118,7 @@ for s = 1, screen.count() do
 	-- Create an imagebox widget which will contains an icon indicating which layout we're using.
 	-- We need one layoutbox per screen.
 	mylayoutbox[s] = awful.widget.layoutbox(s)
-	mylayoutbox[s]:buttons(awful.util.table.join(
-		awful.button({ }, 1, function () awful.layout.inc(settings.layouts, 1) end),
-		awful.button({ }, 3, function () awful.layout.inc(settings.layouts, -1) end),
-		awful.button({ }, 4, function () awful.layout.inc(settings.layouts, 1) end),
-		awful.button({ }, 5, function () awful.layout.inc(settings.layouts, -1) end))
-	)
+
 	-- Create a taglist widget
 	mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
@@ -153,50 +148,97 @@ for s = 1, screen.count() do
 	mywibox[s]:set_widget(layout)
 end
 
--- Mouse bindings
-root.buttons(awful.util.table.join(
-	awful.button({ }, 3, function () mm:toggle() end),
-	awful.button({ }, 4, awful.tag.viewnext),
-	awful.button({ }, 5, awful.tag.viewprev)
-))
+local pulse = require('lib/pulse')
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-	awful.key({ settings.modkey }, "Left", awful.tag.viewprev),
-	awful.key({ settings.modkey }, "Right", awful.tag.viewnext),
-	awful.key({ settings.modkey }, "Escape", awful.tag.history.restore),
-	awful.key({ settings.modkey }, "Up", function ()
+
+	-- Pump Wifi
+	awful.key({ settings.modkey, "Shift", "Control" }, "`", function ()
+		os.execute("gksudo -D \"pump wifi\" \"/home/plejeck/Utils/pump-wifi.zsh\"")
+	end),
+
+	-- Show menu
+	awful.key({ settings.modkey }, ",", function ()
+		menu:show()
+	end),
+
+	-- Screenshots
+	awful.key({ settings.modkey }, "s", function ()
+		os.execute("scrot -m -e 'mv $f ~/Pictures/Scrots/'")
+	end),
+	awful.key({ settings.modkey, "Shift" }, "s", function ()
+		os.execute("sleep 0.2; scrot -s -e 'mv $f ~/Pictures/Scrots/'")
+	end),
+
+	-- Media Keys
+	awful.key({ }, "XF86AudioPlay", function ()
+		os.execute("mpc toggle")
+	end),
+	awful.key({ }, "XF86AudioPrev", function ()
+		os.execute("mpc cdprev")
+	end),
+	awful.key({ }, "XF86AudioNext", function ()
+		os.execute("mpc next")
+	end),
+
+	-- Volume Control
+	awful.key({ }, "XF86AudioLowerVolume", function ()
+		pulse.volumeDown()
+	end),
+	awful.key({ }, "XF86AudioRaiseVolume", function ()
+		pulse.volumeUp()
+	end),
+	awful.key({ }, "XF86AudioMute", function ()
+		pulse.muteToggle()
+	end),
+
+	-- Backlights
+	awful.key({ }, "XF86KbdBrightnessUp", function ()
+		awful.util.spawn("/home/plejeck/Utils/backlights.zsh keyboard +5")
+	end),
+	awful.key({ }, "XF86KbdBrightnessDown", function ()
+		awful.util.spawn("/home/plejeck/Utils/backlights.zsh keyboard -5")
+	end),
+	awful.key({ }, "XF86MonBrightnessUp", function ()
+		awful.util.spawn("/home/plejeck/Utils/backlights.zsh display +5")
+	end),
+	awful.key({ }, "XF86MonBrightnessDown", function ()
+		awful.util.spawn("/home/plejeck/Utils/backlights.zsh display -5")
+	end),
+
+	-- Switch between or reorder open windows
+	awful.key({ settings.modkey }, "k", function ()
 		awful.client.focus.byidx(1)
 		if client.focus then client.focus:raise() end
 	end),
-	awful.key({ settings.modkey }, "Down", function ()
+	awful.key({ settings.modkey, "Shift" }, "k", function ()
+		awful.client.swap.byidx(-1)
+	end),
+	awful.key({ settings.modkey }, "j", function ()
 		awful.client.focus.byidx(-1)
 		if client.focus then client.focus:raise() end
 	end),
-	awful.key({ settings.modkey }, "w", function ()
-		mm:show()
-	end),
-
-	-- Layout manipulation
-	awful.key({ settings.modkey, "Shift" }, "Right", function ()
+	awful.key({ settings.modkey, "Shift" }, "j", function ()
 		awful.client.swap.byidx(1)
 	end),
-	awful.key({ settings.modkey, "Shift" }, "Left", function ()
-		awful.client.swap.byidx(-1)
-	end),
-	awful.key({ settings.modkey, "Control" }, "Left", function ()
-		awful.screen.focus_relative(1)
-	end),
-	awful.key({ settings.modkey, "Control" }, "Right", function ()
-		awful.screen.focus_relative(-1)
-	end),
-	awful.key({ settings.modkey }, "u", awful.client.urgent.jumpto),
 	awful.key({ settings.modkey }, "Tab", function ()
 		awful.client.focus.history.previous()
 			if client.focus then
 				client.focus:raise()
 			end
 	end),
+
+	-- Layout manipulation
+	awful.key({ settings.modkey, "Control" }, "h", function ()
+		awful.screen.focus_relative(1)
+	end),
+	awful.key({ settings.modkey, "Control" }, "l", function ()
+		awful.screen.focus_relative(-1)
+	end),
+	awful.key({ settings.modkey }, "h", awful.tag.viewprev),
+	awful.key({ settings.modkey }, "l", awful.tag.viewnext),
+	awful.key({ settings.modkey }, "Escape", awful.tag.history.restore),
 
 	-- Standard program
 	awful.key({ settings.modkey }, "Return", function ()
@@ -205,13 +247,16 @@ globalkeys = awful.util.table.join(
 	awful.key({ settings.modkey }, "v", function ()
 		awful.util.spawn(settings.editor)
 	end),
+	awful.key({ settings.modkey }, "m", function ()
+		awful.util.spawn("mcomix")
+	end),
 	awful.key({ settings.modkey, "Control" }, "r", awesome.restart),
 	awful.key({ settings.modkey, "Shift" }, "q", awesome.quit),
 
-	awful.key({ settings.modkey, "Shift" }, "Up", function ()
+	awful.key({ settings.modkey, "Shift" }, "Left", function ()
 		awful.tag.incmwfact(0.05)
 	end),
-	awful.key({ settings.modkey, "Shift" }, "Down", function ()
+	awful.key({ settings.modkey, "Shift" }, "Right", function ()
 		awful.tag.incmwfact(-0.05)
 	end),
 
@@ -243,6 +288,15 @@ globalkeys = awful.util.table.join(
 
 	-- Prompt
 	awful.key({ settings.modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+	awful.key({ },                  "XF86LaunchB",     function () mypromptbox[mouse.screen]:run() end),
+
+	awful.key({ settings.modkey, "Shift" }, "b", function ()
+		awful.prompt.run({ prompt = "Display Brightness: " },
+		mypromptbox[mouse.screen].widget,
+		function (num)
+			awful.util.spawn("/home/plejeck/Utils/backlights.zsh display " .. num)
+		end)
+	end),
 
 awful.key({ settings.modkey }, "x",
 function ()

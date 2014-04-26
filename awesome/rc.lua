@@ -3,7 +3,7 @@ local statusbar = { }
 local promptbox = { }
 local taglist = { }
 local layoutbox = { }
-local settings = { }
+local settings = require("./settings")
 
 local gears = require("gears")
 local awful = require("awful")
@@ -31,59 +31,21 @@ do
 	end)
 end
 
-settings.modkey     = "Mod4"
-settings.term       = "termite"
-settings.editor     = "gvim"
-settings.browser    = "firefox"
-settings.fileman    = "thunar"
-settings.dateformat = "%a %b %d %I:%M"
-settings.configdir  = awful.util.getdir("config")
-settings.widgetdir  = settings.configdir .. "/widgets"
-settings.layouts    = {
-	awful.layout.suit.max,
-	awful.layout.suit.tile,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.floating
+beautiful.init("/home/plejeck/.config/awesome/spring/theme.lua")
+
+awful.menu.menu_keys = {
+	up    = { "k", "Up" },
+	down  = { "j", "Down" },
+	exec  = { "l", "Return", "Space" },
+	enter = { "l", "Right" },
+	back  = { "h", "Left" },
+	close = { "q", "Escape" }
 }
-
-beautiful.init("/home/plejeck/.config/awesome/autumn/theme.lua")
-
-if beautiful.wallpaper then
-	for s = 1, screen.count() do
-		gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-	end
-end
-
-mm = awful.menu({
-	items = {
-		{ settings.term,     settings.term,                           theme.menu_terminal },
-		{ settings.browser,  settings.browser,                        theme.menu_wbrowser },
-		{ settings.fileman,  settings.fileman,                        theme.menu_fbrowser },
-		{ "suspend",         "gksudo pm-suspend",                     theme.menu_suspend },
-		{ "reload",          awesome.restart,                         theme.menu_reload },
-		{ "configure",       settings.editor.." "..awesome.conffile,  theme.menu_config },
-		{ "reboot",          "gksudo 'shutdown -r now'",              theme.menu_reboot },
-		{ "shutdown",        "gksudo 'shutdown -h now'",              theme.menu_shutdown },
-		{ "lock",            "dm-tool switch-to-greeter",             theme.menu_lockscreen }
-	}
-})
-
-tags.settings = {
-	{ name = "一", layout = settings.layouts[2], mwfact = .65 },
-	{ name = "二", layout = settings.layouts[1], mwfact = .65 },
-	{ name = "三", layout = settings.layouts[1], mwfact = .65 },
-	{ name = "四", layout = settings.layouts[2], mwfact = .65 },
-	{ name = "五", layout = settings.layouts[1], mwfact = .65 },
-	{ name = "六", layout = settings.layouts[1], mwfact = .65 },
-	{ name = "七", layout = settings.layouts[1], mwfact = .65 },
-	{ name = "八", layout = settings.layouts[1], mwfact = .65 },
-	{ name = "九", layout = settings.layouts[1], mwfact = .65 },
-	{ name = "十", layout = settings.layouts[1], mwfact = .65 }
-}
+menu = awful.menu(settings.menu)
 
 for s = 1, screen.count() do
 	tags[s] = {}
-	for i, v in ipairs(tags.settings) do
+	for i, v in ipairs(settings.tags) do
 		tags[s][i] = awful.tag.add(v.name, {
 			screen = s,
 			layout = v.layout,
@@ -103,7 +65,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Widgets
 -- Create a textclock widget
-mytextclock = awful.widget.textclock(settings.dateformat, 10)
+mytextclock = awful.widget.textclock("  " .. settings.dateformat .. "  ", 10)
 
 -- Create a wibox for each screen and add it
 mywibox = {}

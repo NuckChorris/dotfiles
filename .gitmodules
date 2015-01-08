@@ -1,57 +1,9 @@
-[submodule "vim/bundle/vim-pathogen"]
-	path = vim/bundle/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/gist-vim"]
-	path = vim/bundle/gist-vim
-	url = git://github.com/mattn/gist-vim.git
-[submodule "vim/bundle/gundo"]
-	path = vim/bundle/gundo
-	url = git://github.com/sjl/gundo.vim.git
-[submodule "vim/bundle/autoclose"]
-	path = vim/bundle/autoclose
-	url = git://github.com/korpz/Autoclose-vim.git
-[submodule "vim/bundle/vim-indent-guides"]
-	path = vim/bundle/vim-indent-guides
-	url = git://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "vim/bundle/molokai"]
-	path = vim/bundle/molokai
-	url = git://github.com/tomasr/molokai.git
-[submodule "vim/bundle/nginx.vim"]
-	path = vim/bundle/nginx.vim
-	url = git://github.com/vim-scripts/nginx.vim.git
-[submodule "vim/bundle/webapi-vim"]
-	path = vim/bundle/webapi-vim
-	url = git://github.com/mattn/webapi-vim.git
-[submodule "vim/bundle/matchtag"]
-	path = vim/bundle/matchtag
-	url = git://github.com/gregsexton/MatchTag.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/buffergator"]
-	path = vim/bundle/buffergator
-	url = git://github.com/jeetsukumaran/vim-buffergator.git
-[submodule "vim/bundle/youcompleteme"]
-	path = vim/bundle/youcompleteme
-	url = git://github.com/Valloric/YouCompleteMe.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/javascript"]
-	path = vim/bundle/javascript
-	url = git://github.com/pangloss/vim-javascript.git
-[submodule "vim/bundle/github-colors"]
-	path = vim/bundle/github-colors
-	url = git://github.com/croaky/vim-colors-github.git
+[submodule "vim/bundle/vundle"]
+	path = vim/bundle/vundle
+	url = git://github.com/gmarik/Vundle.vim.git
 [submodule "zsh/zilsh"]
 	path = zsh/zilsh
 	url = git://github.com/NuckChorris/zilsh.git
-[submodule "vim/bundle/javascript-syntax"]
-	path = vim/bundle/javascript-syntax
-	url = git://github.com/jelera/vim-javascript-syntax.git
 [submodule "zsh/bundle/oh-my-zilsh"]
 	path = zsh/bundle/oh-my-zilsh
 	url = git://github.com/NuckChorris/oh-my-zilsh.git

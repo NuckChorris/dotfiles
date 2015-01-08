@@ -1,12 +1,43 @@
 set nocompatible
 
 " ----------------------------------------------------------------------------
-"  Pathogen
+"  Vundle
 " ----------------------------------------------------------------------------
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+
+" Plugins
+" Important
+Plugin 'valloric/youcompleteme'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'sjl/gundo'
+Plugin 'editorconfig/editorconfig-vim'
+
+" Less Important
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'mattn/gist-vim'
+Plugin 'korpz/Autoclose-vim'
+Plugin 'gregsexton/MatchTag'
+
+" Syntaxes
+Plugin 'vim-scripts/nginx.vim'
+Plugin 'othree/yajs.vim'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'heartsentwined/vim-emblem'
+Plugin 'othree/javascript-libraries-syntax.vim'
+
+" Themes
+Plugin 'croaky/vim-colors-github'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/base16-vim'
+
+call vundle#end()
+filetype plugin indent on
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -132,13 +163,14 @@ set mouse=a
 " Change the separator character to use vertical bar instead of pipe
 set fillchars+=vert:│
 
-" Hide scrollbars in GUI
-set guioptions-=L
-set guioptions-=r
-
 " Set font for GUI
 if has('gui_running')
-	set guifont=M+\ 1m\ Ultra-Light\ 10
+	set guifont=M+\ 1m\ Light:h13
+	" Hide scrollbars and menu and toolbars
+	set guioptions-=L
+	set guioptions-=r
+	set guioptions-=m
+	set guioptions-=T
 endif
 
 " ----------------------------------------------------------------------------

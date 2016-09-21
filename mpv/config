@@ -17,9 +17,8 @@ ao=pulse
 # other settings #
 ##################
 
-osc=yes
+osc=no
 osd-bar-align-y=0.7
-osd-blur=5
 ass-hinting=light
 hwdec=vaapi
 alang=jpn

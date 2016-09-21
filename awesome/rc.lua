@@ -16,7 +16,7 @@ local naughty = require("naughty")
 local vicious = require("vicious")
 local menubar = require("menubar")
 
--- Handle runtime errors after startup
+-- Handle runtime errors
 do
 	local in_error = false
 	awesome.connect_signal("debug::error", function (err)
@@ -43,7 +43,9 @@ awful.menu.menu_keys = {
 }
 menu = awful.menu(settings.menu)
 
+-- Set up each display
 for s = 1, screen.count() do
+	-- Create tags
 	tags[s] = {}
 	for i, v in ipairs(settings.tags) do
 		tags[s][i] = awful.tag.add(v.name, {
@@ -52,16 +54,12 @@ for s = 1, screen.count() do
 			mwfact = v.mwfact,
 			hide = v.hide
 		})
---		awful.tag.setscreen(tags[s][i], v.screen)
 	end
-	tags[s][1].selected = true
+	-- Set wallpaper
+	gears.wallpaper.maximized(beautiful.wallpaper, s)
 end
 
-for s = 1, screen.count() do gears.wallpaper.maximized(beautiful.wallpaper, s, true) end
-
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
+menubar.utils.terminal = settings.term
 
 -- {{{ Widgets
 -- Create a textclock widget
@@ -112,6 +110,26 @@ awful.button({ }, 3, function ()
 	end
 end))
 
+local assault = require('widgets/assault/assault')
+local myassault = assault({
+	critical_level = 0.15,
+	critical_color = "#963D3D",
+	charging_color = "#78A678",
+	stroke_width = 2,
+	bolt_width = 14,
+	bolt_height = 7,
+	peg_width = 2,
+	peg_height = 5,
+	height = 11,
+	width = 23,
+	font = "M+ 1p normal 9",
+	battery = "BAT0",
+	adapter = "ADP1"
+})
+
+local now_playing = require('widgets/now-playing/now-playing')
+local mynowplaying = now_playing('  <span color="##D6A27D"><span font="8">♫</span>  <span color="##FEFFD2" weight="normal">%title%</span> by <span color="##FCCEAA">%artist%</span></span>  ')
+
 for s = 1, screen.count() do
 	-- Create a promptbox for each screen
 	mypromptbox[s] = awful.widget.prompt()
@@ -126,7 +144,7 @@ for s = 1, screen.count() do
 	mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
 	-- Create the wibox
-	mywibox[s] = awful.wibox({ position = "top", screen = s })
+	mywibox[s] = awful.wibox({ position = "top", height = 25, screen = s })
 
 	-- Widgets that are aligned to the left
 	local left_layout = wibox.layout.fixed.horizontal()
@@ -135,8 +153,10 @@ for s = 1, screen.count() do
 
 	-- Widgets that are aligned to the right
 	local right_layout = wibox.layout.fixed.horizontal()
+	right_layout:add(mynowplaying)
 	if s == 1 then right_layout:add(wibox.widget.systray()) end
 	right_layout:add(mytextclock)
+	right_layout:add(myassault)
 	right_layout:add(mylayoutbox[s])
 
 	-- Now bring it all together (with the tasklist in the middle)
@@ -305,6 +325,19 @@ function ()
 	awful.util.eval, nil,
 	awful.util.getdir("cache") .. "/history_eval")
 end),
+
+awful.key({ settings.modkey }, "o",
+function ()
+	awful.prompt.run(
+		{ prompt = "Password: " },
+		mypromptbox[mouse.screen].widget,
+		function (tits)
+			naughty.notify({ text = tits })
+		end, nil, nil, nil, nil, nil, function (tits)
+			naughty.notify({ text = tits })
+			mypromptbox[mouse.screen].widget:set_text("*")
+		end)
+end),
 -- Menubar
 awful.key({ settings.modkey }, "p", function() menubar.show() end)
 )
@@ -378,18 +411,18 @@ root.keys(globalkeys)
 -- {{{ Rules
 awful.rules.rules = {
 	-- All clients will match this rule.
+	{ rule = { class = "Gvim" },
+	  properties = {
+		size_hints_honor = false
+	}},
 	{ rule = { },
-	properties = { border_width = beautiful.border_width,
-	border_color = beautiful.border_normal,
-	focus = awful.client.focus.filter,
-	keys = clientkeys,
-	buttons = clientbuttons } },
-	{ rule = { class = "MPlayer" },
-	properties = { floating = true } },
-	{ rule = { class = "pinentry" },
-	properties = { floating = true } },
-	{ rule = { class = "gimp" },
-	properties = { floating = true } },
+	  properties = {
+		border_width = beautiful.border_width,
+		border_color = beautiful.border_normal,
+		focus = awful.client.focus.filter,
+		keys = clientkeys,
+		buttons = clientbuttons
+	}},
 	-- Set Firefox to always map on tags number 2 of screen 1.
 	-- { rule = { class = "Firefox" },
 	--   properties = { tag = tags[1][2] } },

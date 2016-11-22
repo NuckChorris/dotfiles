@@ -1,8 +1,5 @@
-export SSH_ASKPASS=/usr/lib/ssh/undesktop-ssh-askpass
-export KEYCHAIN_AUTOLOAD=1
-
-# Load Zilsh
-source ~/.zsh/zilsh/zilsh.zsh
+# Load Antigen
+source ~/.zsh/antigen/antigen.zsh
 
 function exists () {
 	local -a files
@@ -14,21 +11,12 @@ function fn () {
 }
 
 # Autoload functions
-autoload -Uz colors vcs_info || zilsh_error "Autoload error"
+autoload -Uz colors vcs_info
 # Load colors if it succeeded
 fn "colors" && colors
 # Enable prompt substitution
-fn "vcs_info" && setopt prompt_subst
-
-## BUNDLE SETTINGS ##
-
-omz_plugins=(archlinux bundler capistrano git-extras
-             github node npm rails4 rvm rsync tmux)
-ZILSH_THEME=chocolate
-
-# Initialize zilshbundles
-zilsh_init ~/.zsh/bundle
-
+fn "vcs_info"
+setopt prompt_subst
 
 ##############
 ## Settings
@@ -158,6 +146,8 @@ bindkey "^[OF" end-of-line
 # Source Things
 #################
 
+command -v dinghy >/dev/null 2>&1 && $(dinghy env)
+
 # Source Node Version Manager, if installed.
 command -v ~/nvm/nvm.sh >/dev/null 2>&1 && {
 	. ~/nvm/nvm.sh
@@ -169,3 +159,17 @@ command -v ~/.rvm/scripts/rvm >/dev/null 2>&1 && {
 
 # Add Rubygems to our PATH
 PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+
+
+##########
+# Theme
+#########
+
+PROMPT='%F{2}%n%F{8}@%F{9}%m%F{8}:%F{4}$f%~  %f'
+RPROMPT='%f$(vcs_info_wrapper)%f'
+
+LS_COLORS="di=37:ln=1:so=1:pi=1:ex=1:bd=33:cd=35:su=1:sg=1;47:tw=1:ow=1;46"
+LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
+
+zstyle ":vcs_info:*" formats '%F{2}%b %F{9}(%F{11}%a%F{9})%f'
+zstyle ":vcs_info:*" formats '%F{2}%b%f'

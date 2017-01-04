@@ -160,6 +160,10 @@ command -v ~/.rvm/scripts/rvm >/dev/null 2>&1 && {
 # Add Rubygems to our PATH
 PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 
+# Boot SSH Agent
+{ eval `ssh-agent`; ssh-add -A; } &>/dev/null
+
+[[ $PWD == ~ ]] && cd ~/Code/Kitsu
 
 ##########
 # Theme

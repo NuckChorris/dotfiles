@@ -60,7 +60,9 @@ task :install => %i[
 namespace :install do
   desc 'Installs Vim with a GUI'
   task :vim do
-    install_package brew: 'caskroom/cask/macvim', apt: 'gvim', pacman: 'gvim'
+    install_package brew: 'caskroom/cask/macvim',
+                    apt: 'gvim',
+                    pacman: 'gvim'
   end
 
   desc 'Installs zsh'
@@ -75,12 +77,16 @@ namespace :install do
 
   desc 'Installs Docker'
   task :docker do
-    install_package brew: 'caskroom/cask/docker', apt: 'docker', pacman: 'docker'
+    install_package brew: 'caskroom/cask/docker',
+                    apt: 'docker',
+                    pacman: 'docker'
   end
 
   desc 'Installs Google Chrome'
   task :chrome do
-    install_package brew: 'caskroom/cask/google-chrome', apt: 'google-chrome', pacman: 'chromium'
+    install_package brew: 'caskroom/cask/google-chrome',
+                    apt: 'google-chrome',
+                    pacman: 'chromium'
   end
 
   desc 'Installs the GNU Coreutils for MacOS'

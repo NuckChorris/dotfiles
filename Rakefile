@@ -196,12 +196,18 @@ def install_package_manager!
 end
 
 def install_package(package)
-  package_manager = available_package_managers.find { |key| package.has_key?(key) }
-  package = package[package_manager[:name].to_sym] if package.is_a? Hash
-  raise "Could not find package for #{package_manager[:name]}" unless package
-  say "Installing #{package} with #{package_manager[:name]}"
-  cmd = package_manager.install.sub('$_PKG', package)
-  system cmd
+  if package.is_a?(Hash)
+    package_manager = available_package_managers.find { |key| package.has_key?(key) }
+    package_name = package[package_manager[:name].to_sym] if package.is_a? Hash
+    raise 'Could not find package for system' unless package_name
+    say "Installing #{package_name} via #{package_manager[:name]}"
+    cmd = package_manager.install.sub('$_PKG', package_name)
+    system cmd
+  else
+    hash = {}
+    hash[package_manager[:name]] = package
+    install_package(hash)
+  end
 end
 
 ###########################################################

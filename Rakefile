@@ -64,6 +64,11 @@ task :install => %i[
 ]
 
 namespace :install do
+  desc 'Installs fonts'
+  task :fonts do
+    install_package brew: 'homebrew/cask-fonts/font-iosevka'
+  end
+
   desc 'Installs Atom'
   task :atom do
     install_package brew: 'caskroom/cask/atom-beta'

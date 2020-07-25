@@ -33,9 +33,6 @@ cdpath=(. ~/Code/ $cdpath)
 ## Custom Functions And Aliases
 #################################
 
-# List all
-alias ll="ls -alF"
-
 # git aliases
 alias repull="git pull --rebase"
 alias status="git status"
@@ -43,58 +40,6 @@ alias staged="git diff --staged"
 alias commit="git commit"
 alias add="git add -p"
 alias push="git push"
-
-# CMake aliases
-function oose () {
-	rm -rf build
-	mkdir build
-	cd build
-	cmake ..
-}
-
-# Remote X over SSH
-alias sex="ssh -C -X -c blowfish"
-
-# Compression handlers.  We assume tarballs, not naked compressed files.
-alias -s bz2='tar -xjvf'
-alias -s gz='tar -xzvf'
-alias -s xz='tar -xJvf'
-
-# Image Formats
-alias -s gif='xdg-open'
-alias -s jpg='xdg-open'
-alias -s jpeg='xdg-open'
-alias -s png='xdg-open'
-
-# If mvim is installed, use that instead of vim
-command -v mvim >/dev/null 2>&1 && {
-	alias vim="mvim -v"
-}
-# But maybe gvim is installed
-command -v gvim >/dev/null 2>&1 && {
-	alias vim="gvim -f"
-}
-
-# NPM utilities
-# npmgh - Pull up the github for an npm module
-npmgh () {
-	open $(npm view $1 repository.url | sed s/git\:/https\:/ | sed s/\\\\.git//)
-}
-# npmv - Display the latest version of an npm module
-npmv () {
-	npm info $1 dist-tags.latest
-}
-
-# Tail/head by screenfuls
-stail () {
-	integer l=$(($LINES * $1))
-	tail -n$l $2
-}
-shead () {
-	integer l=$(($LINES * $1))
-	head -n $l $2
-}
-
 
 ##############
 ## VCS info

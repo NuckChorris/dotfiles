@@ -3,7 +3,7 @@ task :default => %i[install configure]
 desc "Copies the configuration files into the user's home directory"
 task :configure => %i[
   configure:zsh configure:tmux configure:vim configure:git configure:awesome configure:xorg
-  configure:mpv
+  configure:mpv configure:atom
 ]
 
 namespace :configure do
@@ -12,7 +12,13 @@ namespace :configure do
     symlink_into_homedir 'zsh/zshrc'
     symlink_into_homedir 'zsh'
     zshdir = File.join(__dir__, 'zsh')
-    system "zsh -c 'antibody bundle < #{zshdir}/plugins.txt > #{zshdir}/plugins.zsh"
+    zsh "antibody bundle < #{zshdir}/plugins.txt > #{zshdir}/plugins.zsh"
+  end
+
+  desc 'Installs the Atom configuration'
+  task :atom do
+    atomdir = File.join(__dir__, 'atom')
+    zsh "apm install --packages-file #{atomdir}/packages.txt"
   end
 
   desc 'Installs the tmux configuration'
@@ -58,11 +64,10 @@ task :install => %i[
 ]
 
 namespace :install do
-  desc 'Installs Vim with a GUI'
-  task :vim do
-    install_package brew: 'caskroom/cask/macvim',
-                    apt: 'gvim',
-                    pacman: 'gvim'
+  desc 'Installs Atom'
+  task :atom do
+    install_package brew: 'caskroom/cask/atom-beta'
+  end
   end
 
   desc 'Installs zsh'
@@ -126,6 +131,10 @@ end
 
 def say(text)
   $stderr.puts "==> #{text}"
+end
+
+def zsh(command)
+  system "zsh -c '#{command}'"
 end
 
 ###########################################################

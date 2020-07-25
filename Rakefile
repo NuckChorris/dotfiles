@@ -64,6 +64,11 @@ task :install => %i[
 ]
 
 namespace :install do
+  desc 'Package Manager'
+  task :package_manager do
+    install_package_manager!
+  end
+
   desc 'Installs fonts'
   task :fonts do
     install_package brew: 'homebrew/cask-fonts/font-iosevka'

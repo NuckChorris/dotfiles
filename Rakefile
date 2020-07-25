@@ -59,8 +59,8 @@ end
 
 desc "Installs the required applications using the system package manager"
 task :install => %i[
-  install:zsh install:tmux install:vim install:docker install:chrome install:gnu_coreutils
-  install:git
+  install:zsh install:tmux install:docker install:chrome install:gnu_coreutils
+  install:git install:atom install:iterm2
 ]
 
 namespace :install do
@@ -68,6 +68,10 @@ namespace :install do
   task :atom do
     install_package brew: 'caskroom/cask/atom-beta'
   end
+
+  desc 'Installs iTerm2'
+  task :iterm2 do
+    install_package brew: 'caskroom/cask/iterm2'
   end
 
   desc 'Installs zsh'

@@ -23,7 +23,7 @@ setopt prompt_subst
 #############
 
 PATH="$PATH:~/bin"
-EDITOR="vim"
+EDITOR="atom -w"
 
 # Make it so cd-ing into ~/Code stuff is easier.
 cdpath=(. ~/Code/ $cdpath)

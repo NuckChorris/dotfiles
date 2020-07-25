@@ -11,8 +11,8 @@ namespace :configure do
   task :zsh do
     symlink_into_homedir 'zsh/zshrc'
     symlink_into_homedir 'zsh'
-    say 'Cloning Antigen'
-    git_clone 'https://github.com/zsh-users/antigen.git', File.join(__dir__, 'zsh/antigen')
+    zshdir = File.join(__dir__, 'zsh')
+    system "zsh -c 'antibody bundle < #{zshdir}/plugins.txt > #{zshdir}/plugins.zsh"
   end
 
   desc 'Installs the tmux configuration'
@@ -68,6 +68,7 @@ namespace :install do
   desc 'Installs zsh'
   task :zsh do
     install_package 'zsh'
+    install_package shell: 'curl -sfL git.io/antibody | sh -s - -b /usr/local/bin'
   end
 
   desc 'Installs tmux'
@@ -144,6 +145,10 @@ PACKAGE_MANAGERS = [
     install: 'brew install $_PKG',
     check: -> { command? 'brew' },
     name: 'brew'
+  }, {
+    install: '$_PKG',
+    check: -> { true },
+    name: 'shell'
   }
 ].map { |hash| OpenStruct.new(hash) }
 

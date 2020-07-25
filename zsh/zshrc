@@ -1,5 +1,7 @@
 # Load Antigen
-source ~/.zsh/antigen/antigen.zsh
+autoload -Uz compinit
+compinit
+source ~/.zsh/plugins.zsh
 
 function exists () {
 	local -a files

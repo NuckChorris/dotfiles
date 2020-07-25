@@ -147,8 +147,12 @@ PACKAGE_MANAGERS = [
   }
 ].map { |hash| OpenStruct.new(hash) }
 
+def available_package_managers
+  @available_package_managers ||= PACKAGE_MANAGERS.select { |man| man.check.() }
+end
+
 def package_manager
-  @package_manager ||= PACKAGE_MANAGERS.select { |man| man.check.() }.first
+  @package_manager ||= available_package_managers.first
 end
 
 def package_manager!
@@ -169,6 +173,7 @@ def install_package_manager!
 end
 
 def install_package(package)
+  package_manager = available_package_managers.find { |key| package.has_key?(key) }
   package = package[package_manager[:name].to_sym] if package.is_a? Hash
   raise "Could not find package for #{package_manager[:name]}" unless package
   say "Installing #{package} with #{package_manager[:name]}"

@@ -5,3 +5,5 @@ vim/swap
 vim/undo
 !vim/bundle/Vundle.vim
 zsh/plugins.zsh
+.vendor
+.bundle

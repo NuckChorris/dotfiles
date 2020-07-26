@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    os (1.1.0)
+    paint (2.2.0)
+    rake (13.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  os
+  paint
+  rake
+
+BUNDLED WITH
+   1.17.2

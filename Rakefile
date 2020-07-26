@@ -18,6 +18,12 @@ namespace :install do
       shell: 'curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash'
   end
 
+  desc 'Installs DisplayLink Drivers'
+  task :displaylink do
+    install_package 'DisplayLink Drivers',
+      brew: 'homebrew/cask-drivers/displaylink'
+  end
+
   desc 'Installs fonts'
   task :fonts do
     install_package 'Iosevka',
@@ -87,9 +93,23 @@ namespace :install do
   end
 
   desc 'Installs Discord'
-  task :slack do
+  task :discord do
     install_package 'Discord',
       brew: 'homebrew/cask/discord'
+  end
+
+  desc 'Installs 1Password'
+  task :onepassword do
+    install_package '1Password',
+      brew: 'homebrew/cask/1password'
+  end
+
+  desc 'Installs Bartender 3'
+  task :bartender do
+    next unless OS.mac?
+
+    install_package 'Bartender',
+      brew: 'homebrew/cask/bartender'
   end
 
   desc 'Installs the GNU Coreutils for MacOS'
@@ -121,6 +141,22 @@ namespace :install do
 
     install_package 'Karabiner Elements',
       brew: 'homebrew/cask/karabiner-elements'
+  end
+
+  desc 'Installs GnuPG'
+  task :gnupg do
+    install_package 'GnuPG',
+      brew: 'gnupg',
+      pacman: 'gnupg',
+      apt: 'gnupg'
+  end
+
+  desc 'Installs RVM'
+  task :rvm => %i[gnupg] do
+    install_package 'RVM Keys',
+      shell: 'gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB'
+    install_package 'RVM',
+      shell: 'curl -sSL https://get.rvm.io | bash -s stable'
   end
 end
 

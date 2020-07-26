@@ -158,6 +158,12 @@ namespace :install do
     install_package 'RVM',
       shell: 'curl -sSL https://get.rvm.io | bash -s stable'
   end
+
+  desc 'Installs NVM'
+  task :nvm do
+    install_package 'NVM',
+      shell: 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash'
+  end
 end
 
 

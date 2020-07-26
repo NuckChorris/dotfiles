@@ -104,9 +104,6 @@ command -v ~/.rvm/scripts/rvm >/dev/null 2>&1 && {
 	source $HOME/.rvm/scripts/rvm
 }
 
-# Add Rubygems to our PATH
-PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-
 # Boot SSH Agent
 { eval `ssh-agent`; ssh-add -A; } &>/dev/null
 
@@ -124,3 +121,6 @@ LSCOLORS="hxCxFxDxGxdxfxGAGhHAHg"
 
 zstyle ":vcs_info:*" formats '%F{2}%b %F{9}(%F{11}%a%F{9})%f'
 zstyle ":vcs_info:*" formats '%F{2}%b%f'
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

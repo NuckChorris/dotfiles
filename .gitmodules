@@ -1,9 +1,0 @@
-[submodule "zsh/zilsh"]
-	path = zsh/zilsh
-	url = git://github.com/NuckChorris/zilsh.git
-[submodule "zsh/bundle/oh-my-zilsh"]
-	path = zsh/bundle/oh-my-zilsh
-	url = git://github.com/NuckChorris/oh-my-zilsh.git
-[submodule "zsh/bundle/pacman"]
-	path = zsh/bundle/pacman
-	url = git://github.com/NuckChorris/pacman-zilsh.git

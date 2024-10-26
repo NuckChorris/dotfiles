@@ -1,0 +1,99 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+format = """
+$status\
+[](fg:#7587a6)\
+$directory\
+[](fg:#7587a6 bg:#afc4db)\
+$git_branch\
+[](fg:#afc4db) \
+$nodejs\
+$rust\
+$ruby\
+$kubernetes\
+\n$character"""
+
+[status]
+format = "$symbol\n"
+disabled = true
+symbol = """
+[](fg:#bb1616)\
+[ 󰅙  $common_meaning$maybe_int ](bg:#bb1616 fg:#ffffff)\
+[](fg:#bb1616)\
+"""
+not_executable_symbol = """
+[](fg:#bb1616)\
+[ 󰍶  Not Executable ](bg:#bb1616 fg:#ffffff)\
+[](fg:#bb1616)\
+"""
+signal_symbol = """
+[](fg:#ccbb22)\
+[ 󰙦  SIG$signal_name ](bg:#ccbb22)
+[](fg:#ccbb22)\
+"""
+sigint_symbol = """
+[](fg:#ccbb22)\
+[ 󰙦  SIGINT ](bg:#ccbb22)\
+[](fg:#ccbb22)\
+"""
+pipestatus_format = """
+$pipestatus\
+[](fg:#bb1616)\
+[ 󰅙  $common_meaning$maybe_int ](bg:#bb1616 fg:#ffffff)\
+[](fg:#bb1616)
+"""
+pipestatus_separator = ""
+map_symbol = true
+pipestatus = true
+
+[directory]
+style = "fg:#2f343b bg:#7587a6"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "… /"
+truncate_to_repo = false
+
+[directory.substitutions]
+"~/Documents" = "󰈙 "
+"~/Downloads" = " "
+"~/Music" = " "
+"~/Pictures" = " "
+"~/Code" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#afc4db"
+format = '[[ $symbol $branch ](fg:#616f8a bg:#afc4db)]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:#339933"
+format = '[[ $symbol $version ](bg:#339933 fg:#1e4e1e)]($style) '
+version_format = "${major}.${minor}"
+
+[rust]
+symbol = ""
+style = "fg:#212736"
+format = '[[ $symbol ($version) ](bg:#212736)]($style) '
+version_format = "${major}.${minor}"
+
+[ruby]
+symbol = ""
+style = "fg:#bc3232"
+format = '[[ $symbol $version ](bg:#bc3232 fg:#531111)]($style) '
+version_format = "${major}.${minor}"
+
+[kubernetes]
+disabled = false
+detect_folders = ["kubernetes"]
+symbol = "󱃾 "
+style = "fg:#326ce5"
+format = '[[ $symbol ($namespace@)$context ](bg:#326ce5 fg:#071625)]($style) '
+
+[character]
+success_symbol = "❯"
+error_symbol = "❯"

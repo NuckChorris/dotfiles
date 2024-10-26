@@ -1,10 +1,31 @@
 [user]
-	name = Peter Lejeck
-	email = peter.lejeck@gmail.com
+	name = Emma Lejeck
+	email = nuck@kitsu.io
+	signingkey = EC876619DEA2290EBB006055C160F44FF7E81C56
+
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg2
+
+[commit]
+	gpgsign = true
 
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
+
+[init]
+	defaultBranch = main
+
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	undo = reset --soft HEAD^
+	sync = !git pull && git push
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 
 [color]
 	ui = auto
@@ -30,10 +51,38 @@
 
 [github]
 	user = NuckChorris
+
 [push]
 	default = simple
+	autoSetupRemote = true
+
+[pull]
+	rebase = true
+
+[rebase]
+	autoStash = true
+
+
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P
+
 [merge]
 	defaultToUpstream = true
-[alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	undo = reset --soft HEAD^
+	tool = Kaleidoscope
+[mergetool]
+	keepBackup = true
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
+[diff]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+	trustExitCode = true
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

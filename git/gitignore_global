@@ -5,7 +5,11 @@
 Session.vim
 .netrwhist
 *~
+_scraps/
+.idea/
 
 # Idiocy from OSes
 .DS_Store
 thumbs.db
+.ruby-lsp
+.vscode
